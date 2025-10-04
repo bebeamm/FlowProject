@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.iOS;
-using static UnityEngine.Rendering.DebugUI;
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
  
-    public Canvas canvas;
-    public Camera cameraCanvas;
+    //public Canvas canvas;
+    //public Camera cameraCanvas;
 
     public DialoguePanel panel;
     //public Image characterIcon;
@@ -36,22 +34,22 @@ public class DialogueManager : MonoBehaviour
         lines = new List<DialogueLine>();
     }
 
-    private void validate()
-    {
-        if(cameraCanvas == null)
-        {
-            cameraCanvas = Camera.main;
-        }
+    //private void validate()
+    //{
+    //    if(cameraCanvas == null)
+    //    {
+    //        cameraCanvas = Camera.main;
+    //    }
 
-        if (canvas.worldCamera == null && cameraCanvas != null)
-        {
-            canvas.worldCamera = cameraCanvas;
-        }
-    }
+    //    if (canvas.worldCamera == null && cameraCanvas != null)
+    //    {
+    //        canvas.worldCamera = cameraCanvas;
+    //    }
+    //}
 
     private void Update()
     {
-        validate();
+        //validate();
 
         if (Input.GetKeyDown(KeyCode.JoystickButton1))
         {
