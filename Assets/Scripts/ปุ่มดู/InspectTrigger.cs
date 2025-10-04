@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InspectTrigger : MonoBehaviour
-{
-   
-    
+{  
     public GameObject boardPrefab;
     public Transform spawnPoint;
     private GameObject currentBoard;
