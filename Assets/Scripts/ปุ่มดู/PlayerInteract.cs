@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
-{
-    
-   
+{   
     public GameObject targetUI;
+    public DialogueTrigger DialogueTrigger;
+
     private GameObject player;
     private PlayerController playerController;
     private Rigidbody2D playerRb;
@@ -34,6 +32,11 @@ public class PlayerInteract : MonoBehaviour
             {
                 playerController.enabled = false;
             }
+
+            if(DialogueTrigger != null)
+            {
+                DialogueTrigger.TriggerDialogue();
+            }
 
             if (playerRb != null)
             {
