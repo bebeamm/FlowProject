@@ -740,9 +740,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ff2617cb61ba1b4cbe43d1ce8c41218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterIcon: {fileID: 1315178075}
-  characterName: {fileID: 1326358623}
-  dialogueArea: {fileID: 1509632979}
+  canvas: {fileID: 0}
+  cameraCanvas: {fileID: 0}
+  panel: {fileID: 0}
+  DialoguePage: 0
   isDialogueActive: 1
   typingSpeed: 0.2
   animator: {fileID: 1315178074}
@@ -4145,9 +4146,10 @@ GameObject:
   - component: {fileID: 2007925899}
   - component: {fileID: 2007925898}
   - component: {fileID: 2007925897}
-  - component: {fileID: 2007925902}
   - component: {fileID: 2007925901}
+  - component: {fileID: 2007925902}
   - component: {fileID: 2007925905}
+  - component: {fileID: 2007925906}
   m_Layer: 0
   m_Name: TV
   m_TagString: Untagged
@@ -4315,13 +4317,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc7cfe4d1fd17b641a2f2db72c058c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    dialogueLines:
-    - character:
-        name: "\u0E22\u0E32\u0E22\u0E41\u0E2A\u0E07\u0E14\u0E32\u0E27"
-        icon: {fileID: 563665498, guid: 64dcc021b5e24c34ebfc6c478de0be3f, type: 3}
-      line: "\u0E2A\u0E27\u0E31\u0E2A\u0E14\u0E35\u0E08\u0E49\u0E32\u0E2B\u0E25\u0E32\u0E19
-        \u0E46"
+  dialogue: {fileID: 11400000, guid: 3a60a6f4ff1f70f40acf6b4d82c5a071, type: 2}
+--- !u!114 &2007925906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007925896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4a3bb4778571642a8bd3cc49529d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetUI: {fileID: 0}
+  DialogueTrigger: {fileID: 2007925905}
 --- !u!1 &2014343942
 GameObject:
   m_ObjectHideFlags: 0
