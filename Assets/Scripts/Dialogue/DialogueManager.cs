@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
+
+    public event Action OnEndDialogue;
  
     //public Canvas canvas;
     //public Camera cameraCanvas;
@@ -53,6 +56,9 @@ public class DialogueManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.JoystickButton1))
         {
+            if (!panel.gameObject.activeSelf)
+                return;
+
             NextDialogue();
             Debug.Log("Dialogue ...");
         }
@@ -104,7 +110,7 @@ public class DialogueManager : MonoBehaviour
 
         animator.Play("show");
  
-        //lines.Clear();s
+        //lines.Clear();
 
         lines = dialogue.dialogueLines;
 
@@ -154,6 +160,7 @@ public class DialogueManager : MonoBehaviour
  
     void EndDialogue()
     {
+        OnEndDialogue?.Invoke();
         isDialogueActive = false;
         animator.Play("hide");
     }

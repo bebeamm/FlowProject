@@ -8,14 +8,17 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Item egg;
     [SerializeField] private Item paper;
     [SerializeField] private Item tape;
+    [SerializeField] private Item paperBag;
 
     public int GetEgg => egg.Amount; 
     public int GetPaper => paper.Amount; 
     public int GetTape => tape.Amount; 
+    public int GetPaperBag => paperBag.Amount;
 
     public void AddEgg(int amount) => egg.Amount += amount;
     public void AddPaper(int amount) => paper.Amount += amount;
     public void AddTape(int amount) => tape.Amount += amount;
+    public void AddPaperBag(int amount) => paperBag.Amount += amount;
 
     private void Awake()
     {
@@ -30,6 +33,7 @@ public class InventoryManager : MonoBehaviour
         egg.Amount = 5;
         paper.Amount = 5;
         tape.Amount = 5;
+        paperBag.Amount = 0;
     }
     
 }
@@ -37,13 +41,6 @@ public class InventoryManager : MonoBehaviour
 [Serializable]
 public class Item
 {
-    //public ItemType Type;
     public int Amount;
 }
 
-public enum ItemType
-{
-    Egg,
-    Paper,
-    Tape
-}

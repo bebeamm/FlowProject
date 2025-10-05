@@ -24,7 +24,7 @@ public class GameTimeManager : MonoBehaviour
 
     void Update()
     {
-        timeCount += Time.deltaTime * 4;
+        timeCount += Time.deltaTime * 20;
 
         if(timeCount < 180)
             timeOfDay = TimeOfDay.morning;
@@ -37,6 +37,13 @@ public class GameTimeManager : MonoBehaviour
             timeCount = 0;
             day++;
         }
+    }
+
+    public void NextDay()
+    {
+        timeOfDay = TimeOfDay.morning;
+        timeCount = 0;
+        day++;
     }
 }
 

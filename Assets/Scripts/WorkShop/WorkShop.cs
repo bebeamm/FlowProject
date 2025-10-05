@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WorkShop : MonoBehaviour
 {
@@ -34,8 +35,21 @@ public class WorkShop : MonoBehaviour
         step ++;
 
         if (step + 1 >= paperSpriteList.Count)
+        {
+            Invoke(nameof(ReSetToFirst), 2f);
+            step = 0;
             Debug.Log("Done");
+        }
 
+    }
+
+    public void ReSetToFirst()
+    {
+        if(InventoryManager.Instance.GetPaper > 0)
+        {
+            paperSpriteList[0].DOFade(1,1f);
+            paperSpriteList[paperSpriteList.Count - 1].DOFade(0, 1f);
+        }
     }
     
     public void InputByStep()

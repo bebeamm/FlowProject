@@ -1,18 +1,62 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Shop : MonoBehaviour
+public class ShopPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int selectIndex = 0;
+
+    [SerializeField] private List<Toggle> toggles;
+
+    private void Awake()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            previousSelect();
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            nextSelect();
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            buyItem(selectIndex);
+        }
+    }
+
+    private void nextSelect()
+    {
+        selectIndex++;
+
+        if (selectIndex >= toggles.Count)
+            selectIndex = 0;
+
+        toggles[selectIndex].isOn = true;
+    }
+
+    private void previousSelect()
+    {
+        selectIndex--;
+        if(selectIndex < 0)
+            selectIndex = toggles.Count - 1;
+
+        toggles[selectIndex].isOn = true;
+    }
+
+    private void buyItem(int index)
+    {
+        switch (index)
+        {
+            case 0: Debug.Log("Paper"); break;
+            case 1: Debug.Log("egg");break;
+            case 2: Debug.Log("tape");break;
+        }
     }
 }
