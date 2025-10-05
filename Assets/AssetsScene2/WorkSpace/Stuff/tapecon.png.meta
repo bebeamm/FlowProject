@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0e9970f79c496f24aad6a2b99f84f2ba
+guid: 16578817f71cd3a4d886d12160d7fed7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pan_0
+      name: tapecon_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 170
-        width: 838
-        height: 878
+        x: 966
+        y: 2
+        width: 141
+        height: 132
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fe51b8f145753f4fac58ec3f8eff307
-      internalID: 969254364
+      spriteID: e8d17d0eaef0a064e9d7b6f9fbfb7e5a
+      internalID: -1864312395
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pan_0: 969254364
+      tapecon_0: -1864312395
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

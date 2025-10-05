@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 16e719e6e7ee52541b4388f89d407e0a
+guid: 6dff64edbed968f42ba5f0f5d96e1e0b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Friedegg-2_0
+      name: baitoeycon_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 170
-        width: 838
-        height: 878
+        x: 966
+        y: 2
+        width: 141
+        height: 132
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eeda6ed09bbdff84ab41112b2b681c3f
-      internalID: -1724572105
+      spriteID: db49e3fce716b274ea542e0f855e2c63
+      internalID: 1396858825
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Friedegg-2_0: -1724572105
+      baitoeycon_0: 1396858825
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

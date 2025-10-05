@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 194b53210401f184ab61a997525cf3cc
+guid: 2c62f302d39ff1b40a7a4ebfdb9b9463
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boil-1_0
+      name: papercon_0
       rect:
         serializedVersion: 2
-        x: 900
-        y: 267
-        width: 910
-        height: 813
+        x: 637
+        y: 2
+        width: 141
+        height: 132
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c227c9d1688fb34bb1bf24958564e9b
-      internalID: 655545073
+      spriteID: dba487e3f63582147b3c75da23af2254
+      internalID: -356594681
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Boil-1_0: 655545073
+      papercon_0: -356594681
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
