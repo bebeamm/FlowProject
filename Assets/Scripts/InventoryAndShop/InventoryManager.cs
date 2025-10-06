@@ -11,10 +11,12 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private Item tape;
     [SerializeField] private Item paperBag;
 
+    private int useTape = 0;
+
     public int GetMoney => money;
-    public int GetEgg => egg.Amount; 
-    public int GetPaper => paper.Amount; 
-    public int GetTape => tape.Amount; 
+    public int GetEgg => egg.Amount;
+    public int GetPaper => paper.Amount;
+    public int GetTape => tape.Amount;
     public int GetPaperBag => paperBag.Amount;
 
     public void AddMoney(int amount) => money += amount;
@@ -43,6 +45,17 @@ public class InventoryManager : MonoBehaviour
         //paper.Amount = 2;
         //tape.Amount = 1;
         //paperBag.Amount = 0;
+    }
+
+    public void UseTape()
+    {
+        useTape++;
+
+        if(useTape >= 5)
+        {
+            RemoveTape(1);
+            useTape = 0;
+        }
     }
     
 }

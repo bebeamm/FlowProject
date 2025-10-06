@@ -99,7 +99,7 @@ public class WorkShop : MonoBehaviour
     private void Done()
     {
         InventoryManager.Instance.RemovePaper(1);
-        InventoryManager.Instance.RemoveTape(1);
+        InventoryManager.Instance.UseTape();
         InventoryManager.Instance.AddPaperBag(1);
         step = 0;
         SetAmount();

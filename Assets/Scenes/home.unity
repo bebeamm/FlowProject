@@ -723,6 +723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionKey: 0
+  timeOfDay: 1
   isBypassAction: 0
   targetUI: {fileID: 0}
   DialogueTrigger: {fileID: 0}
@@ -1914,7 +1915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 988843517156024348, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5233879753202133365, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2451,6 +2452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionKey: 0
+  timeOfDay: 0
   isBypassAction: 0
   targetUI: {fileID: 0}
   DialogueTrigger: {fileID: 0}
@@ -5011,6 +5013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionKey: 1
+  timeOfDay: 0
   isBypassAction: 0
   targetUI: {fileID: 0}
   DialogueTrigger: {fileID: 2007925905}

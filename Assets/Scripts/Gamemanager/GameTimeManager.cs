@@ -55,6 +55,7 @@ public class GameTimeManager : MonoBehaviour
 
 public enum TimeOfDay
 {
+    none,
     morning,
     evening,
     night

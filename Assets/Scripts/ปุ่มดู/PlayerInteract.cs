@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private keyToAction actionKey;
+    [SerializeField] private TimeOfDay timeOfDay;
     [SerializeField] private bool isBypassAction = false;
 
     public GameObject targetUI;
@@ -53,7 +53,7 @@ public class PlayerInteract : MonoBehaviour
             Event.Invoke();
         }
 
-        if (playerInside && (Input.GetKeyDown(KeyCode.Return) || CheckKey()))
+        if (playerInside && (Input.GetKeyDown(KeyCode.Return) || CheckKey()) && CheckTime(timeOfDay))
         {
             Event?.Invoke();
 
@@ -96,6 +96,23 @@ public class PlayerInteract : MonoBehaviour
             }
         }
     }
+
+    private bool CheckTime(TimeOfDay timeOfDay)
+    {
+        if (timeOfDay == TimeOfDay.none)
+        {
+            return true;
+        }else if(timeOfDay != TimeOfDay.none)
+        {
+            if(GameTimeManager.Instance.GetTimeOfDay == timeOfDay)
+                return true;
+            else return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
