@@ -3,10 +3,11 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public DialogueDayList dialogue;
+    [SerializeField] private bool isShopDialogue;
 
     public void TriggerDialogue()
     {
-        DialogueManager.Instance.StartDialogueDay(dialogue);
+        DialogueManager.Instance.StartDialogueDay(dialogue, isShopDialogue);
     }
 
     //public DialoguePanel dialoguePanel;

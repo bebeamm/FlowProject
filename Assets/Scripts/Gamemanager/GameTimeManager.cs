@@ -30,7 +30,7 @@ public class GameTimeManager : MonoBehaviour
         if (isTimePause)
             return;
 
-        timeCount += Time.deltaTime * 20;
+        timeCount += Time.deltaTime;
 
         if(timeCount < 180)
             timeOfDay = TimeOfDay.morning;

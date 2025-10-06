@@ -30,9 +30,12 @@ public class DialogueManager : MonoBehaviour
  
     public Animator animator;
 
+    public bool isShopDialogue;
+
     private InputAction pressLeft;
     private InputAction pressRight;
     private InputAction pressX;
+    private InputAction pressSqr;
 
     private void Awake()
     {
@@ -44,6 +47,7 @@ public class DialogueManager : MonoBehaviour
         pressX = InputSystem.actions.FindAction("Interact/X");
         pressLeft = InputSystem.actions.FindAction("Interact/Left");
         pressRight = InputSystem.actions.FindAction("Interact/Right");
+        pressSqr = InputSystem.actions.FindAction("Interact/Sq");
     }
 
     //private void validate()
@@ -89,6 +93,12 @@ public class DialogueManager : MonoBehaviour
         {
             EndDialogue();
         }
+
+        if(isShopDialogue && pressSqr.WasPressedThisFrame())
+        {
+            EndDialogue();
+            ShopPanel.Instance.OpenShop();
+        }
     }
 
     private void previousDialogue()
@@ -118,9 +128,14 @@ public class DialogueManager : MonoBehaviour
         DisplayNextDialogueLine(lines[DialoguePage]);
     }
 
-    public void StartDialogueDay(DialogueDayList dialogueDayList)
+    public void StartDialogueDay(DialogueDayList dialogueDayList,bool dialogue = false)
     {
+        if (ShopPanel.Instance.isShopActive)
+            return;
+
         int day = GameTimeManager.Instance.GetDay;
+
+        isShopDialogue = dialogue;
 
         for (int i = 0; i < dialogueDayList.dayLists.Count; i++)
         {
@@ -143,6 +158,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (dialogue == null || dialogue.dialogueLines.Count <= 0)
             return;
+
+        GameManager.Instance.PlayerController.enabled = false;
 
         isDialogueActive = true;
 
@@ -202,6 +219,8 @@ public class DialogueManager : MonoBehaviour
     {
         OnEndDialogue?.Invoke();
         isDialogueActive = false;
+        isShopDialogue = false;
+        GameManager.Instance.PlayerController.enabled = true;
         animator.Play("hide");
     }
 }

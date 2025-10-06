@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField] public GameObject Player;
+    [SerializeField] public PlayerController PlayerController;
 
     public GameObject GetPlayer => Player;
 
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             Player = GameObject.FindGameObjectWithTag("Player");
+            PlayerController = Player.GetComponent<PlayerController>();
         }
     }
 }
