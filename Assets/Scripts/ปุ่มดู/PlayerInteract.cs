@@ -1,7 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerInteract : MonoBehaviour
-{   
+{
+    [SerializeField] private keyToAction actionKey;
+    [SerializeField] private bool isBypassAction = false;
+
     public GameObject targetUI;
     public DialogueTrigger DialogueTrigger;
 
@@ -11,7 +17,22 @@ public class PlayerInteract : MonoBehaviour
     private Animator playerAnimator;
     private bool playerInside = false;
 
-    void Start()
+    private InputAction pressUp;
+    private InputAction pressDown;
+    private InputAction pressX;
+
+
+    public UnityEvent Event;
+
+    private void Awake()
+    {
+        pressDown = InputSystem.actions.FindAction("Interact/Down");
+        pressUp = InputSystem.actions.FindAction("Interact/Up");
+        pressX = InputSystem.actions.FindAction("Interact/X");
+
+    }
+
+    void Start()
     {
         if (targetUI != null)
         {
@@ -19,11 +40,24 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
+    public void DebugTest()
+    {
+        Debug.Log("Check...");
+        
+    }
+
     void Update()
     {
-        if (playerInside && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.JoystickButton0)))
+        if (CheckKey() && isBypassAction)
+        {
+            Event.Invoke();
+        }
+
+        if (playerInside && (Input.GetKeyDown(KeyCode.Return) || CheckKey()))
         {
-            if (targetUI != null)
+            Event?.Invoke();
+
+            if (targetUI != null)
             {
                 targetUI.SetActive(true);
             }
@@ -93,4 +127,24 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
+    private bool CheckKey()
+    {
+        if(pressUp.WasCompletedThisFrame() && actionKey == keyToAction.Up) return true;
+        else if (pressDown.WasCompletedThisFrame() && actionKey == keyToAction.Down) return true;
+        else if (pressX.WasCompletedThisFrame() && actionKey == keyToAction.X) return true;
+        else return false;
+    }
+}
+
+
+public enum keyToAction
+{
+    Down,
+    Up,
+    Left,
+    Right,
+    X,
+    O,
+    Sq,
+    Tri
 }

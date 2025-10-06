@@ -14,6 +14,9 @@ public class SceneButtonTrigger : MonoBehaviour
     bool playerInside = false;
     bool isActivating = false;
     float lastPressTime = -10f;
+    [SerializeField] bool isPlayerActive = true;
+    [SerializeField] bool isControlFormOut;    
+    
 
     void Start()
     {
@@ -41,7 +44,7 @@ public class SceneButtonTrigger : MonoBehaviour
 
     void Update()
     {
-        if (!playerInside || isActivating) return;
+        if (!playerInside || isActivating|| isControlFormOut) return;
 
         if (IsSubmitPressed())
         {
@@ -49,6 +52,13 @@ public class SceneButtonTrigger : MonoBehaviour
             lastPressTime = Time.time;
             StartCoroutine(ActivateAndLoad());
         }
+    }
+
+    public void ChangeScene()
+    {
+        if (Time.time - lastPressTime < pressCooldown) return;
+        lastPressTime = Time.time;
+        StartCoroutine(ActivateAndLoad());
     }
 
     IEnumerator ActivateAndLoad()
@@ -59,7 +69,7 @@ public class SceneButtonTrigger : MonoBehaviour
 
     if (SceneLoader.Instance != null)
     {
-        SceneLoader.Instance.StartSceneTransition(sceneToLoad, playerSpawnPosition);
+        SceneLoader.Instance.StartSceneTransition(sceneToLoad, playerSpawnPosition,isPlayerActive);
     }
     else
     {

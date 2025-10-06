@@ -13,6 +13,9 @@ public class GameTimeManager : MonoBehaviour
 
     [SerializeField] private float timeCount = 0;
 
+    private bool isTimePause = false;
+    public void SetTimePause(bool state) => isTimePause = state;
+
     private void Awake()
     {
         if(Instance == null)
@@ -24,6 +27,9 @@ public class GameTimeManager : MonoBehaviour
 
     void Update()
     {
+        if (isTimePause)
+            return;
+
         timeCount += Time.deltaTime * 20;
 
         if(timeCount < 180)

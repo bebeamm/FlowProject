@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -28,13 +29,21 @@ public class DialogueManager : MonoBehaviour
     public float typingSpeed = 0.2f;
  
     public Animator animator;
- 
+
+    private InputAction pressLeft;
+    private InputAction pressRight;
+    private InputAction pressX;
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
  
         lines = new List<DialogueLine>();
+
+        pressX = InputSystem.actions.FindAction("Interact/X");
+        pressLeft = InputSystem.actions.FindAction("Interact/Left");
+        pressRight = InputSystem.actions.FindAction("Interact/Right");
     }
 
     //private void validate()
@@ -54,24 +63,55 @@ public class DialogueManager : MonoBehaviour
     {
         //validate();
 
-        if (Input.GetKeyDown(KeyCode.JoystickButton1))
+        //if (Input.GetKeyDown(KeyCode.JoystickButton1))
+        //{
+        //    if (!panel.gameObject.activeSelf)
+        //        return;
+
+        //    NextDialogue();
+        //}
+
+        if (pressRight.WasPressedThisFrame())
         {
             if (!panel.gameObject.activeSelf)
                 return;
 
             NextDialogue();
-            Debug.Log("Dialogue ...");
+        }
+        else if (pressLeft.WasPressedThisFrame())
+        {
+            if (!panel.gameObject.activeSelf)
+                return;
+
+            previousDialogue();
+        }
+        else if (pressX.WasPressedThisFrame())
+        {
+            EndDialogue();
         }
     }
 
-    public void NextDialogue()
+    private void previousDialogue()
+    {
+        DialoguePage--;
+
+        if (DialoguePage < 0)
+        {
+            DialoguePage = 0;
+            return;
+        }
+
+        DisplayNextDialogueLine(lines[DialoguePage]);
+    }
+
+    private void NextDialogue()
     {
         DialoguePage++;
 
         if(DialoguePage >= lines.Count)
         {
-            DialoguePage = 0;
-            EndDialogue();
+            //DialoguePage = 0;
+            //EndDialogue();
             return;
         }
 

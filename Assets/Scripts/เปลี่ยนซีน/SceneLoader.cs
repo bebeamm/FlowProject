@@ -13,6 +13,7 @@ public class SceneLoader : MonoBehaviour
     public float fadeDuration = 1f;
 
     private Vector2 nextPlayerPosition;
+    private bool isPlayerActive;
     private const string PLAYER_TAG = "Player";
 
     private void Awake()
@@ -36,9 +37,10 @@ public class SceneLoader : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoadedSafeSetup;
     }
 
-    public void StartSceneTransition(string sceneName, Vector2 playerPos)
+    public void StartSceneTransition(string sceneName, Vector2 playerPos,bool activePlayer = true)
     {
         nextPlayerPosition = playerPos;
+        isPlayerActive = activePlayer;
         StartCoroutine(Transition(sceneName));
     }
 
@@ -56,6 +58,7 @@ public class SceneLoader : MonoBehaviour
             yield return null;
 
         // เซ็ตตำแหน่ง Player ถ้ามี
+        activePlayer(isPlayerActive);
         RepositionPlayer(nextPlayerPosition);
 
         // รีบอินด์ Cinemachine ให้ตาม Player เสมอ
@@ -85,6 +88,16 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
+    private void activePlayer(bool state)
+    {
+        Debug.Log("PlayerHasSate : " + state);
+        GameObject player = FindPlayer();
+        if (player != null)
+        {
+            player.SetActive(state);
+        }
+    }
+
     private void RetargetAllCinemachineCameras()
     {
         Transform player = FindPlayerTransform();
@@ -106,8 +119,14 @@ public class SceneLoader : MonoBehaviour
     private Transform FindPlayerTransform()
     {
         // แนะนำให้ตั้ง Tag = "Player" ไว้ที่ตัวละครที่ DontDestroyOnLoad
-        GameObject playerGO = GameObject.FindGameObjectWithTag(PLAYER_TAG);
+        GameObject playerGO = GameManager.Instance.GetPlayer;
         return playerGO ? playerGO.transform : null;
+    }
+
+    private GameObject FindPlayer()
+    {
+        GameObject playerGO = GameManager.Instance.GetPlayer;
+        return playerGO ? playerGO : null;
     }
 
     private void EnsureCinemachineBrainOnMainCamera()
