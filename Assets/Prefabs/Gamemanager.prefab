@@ -606,6 +606,8 @@ MonoBehaviour:
   money: 500
   egg:
     Amount: 5
+  pandan:
+    Amount: 5
   paper:
     Amount: 5
   tape:
@@ -1289,7 +1291,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 6935239170717550284}
   DialoguePage: 0
-  isDialogueActive: 0
   typingSpeed: 0.03
   animator: {fileID: 5649541996837930413}
   isShopDialogue: 0
@@ -2310,7 +2311,7 @@ GameObject:
   - component: {fileID: 2961836211708171454}
   - component: {fileID: 4830508227303557321}
   m_Layer: 0
-  m_Name: GameTimeManager
+  m_Name: TimeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

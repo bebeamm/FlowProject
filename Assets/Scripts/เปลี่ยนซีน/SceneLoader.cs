@@ -119,12 +119,18 @@ public class SceneLoader : MonoBehaviour
     private Transform FindPlayerTransform()
     {
         // แนะนำให้ตั้ง Tag = "Player" ไว้ที่ตัวละครที่ DontDestroyOnLoad
+        if(GameManager.Instance == null)
+            return null;
+
         GameObject playerGO = GameManager.Instance.GetPlayer;
         return playerGO ? playerGO.transform : null;
     }
 
     private GameObject FindPlayer()
     {
+        if (GameManager.Instance == null)
+            return null;
+
         GameObject playerGO = GameManager.Instance.GetPlayer;
         return playerGO ? playerGO : null;
     }

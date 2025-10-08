@@ -2266,11 +2266,11 @@ GameObject:
   - component: {fileID: 761381256}
   - component: {fileID: 761381255}
   - component: {fileID: 761381254}
-  - component: {fileID: 761381258}
   - component: {fileID: 761381260}
   - component: {fileID: 761381257}
   - component: {fileID: 761381261}
   - component: {fileID: 761381259}
+  - component: {fileID: 761381262}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Untagged
@@ -2381,19 +2381,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardPrefab: {fileID: 43082591399236159, guid: 403ccc5672e24c741a42825a73e286ab, type: 3}
   spawnPoint: {fileID: 781269318}
---- !u!114 &761381258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 761381253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c44c47beba3c2f4aac27ecae78d2530, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: 
 --- !u!61 &761381259
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2459,9 +2446,9 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 761381261}
-        m_TargetAssemblyTypeName: Sleep, Assembly-CSharp
-        m_MethodName: OnSleep
+      - m_Target: {fileID: 761381262}
+        m_TargetAssemblyTypeName: SceneButtonTrigger, Assembly-CSharp
+        m_MethodName: ChangeScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2484,6 +2471,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fade: {fileID: 0}
+--- !u!114 &761381262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761381253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f943856d86d9cb419b2b92aa32fdcad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Dream
+  playerSpawnPosition: {x: 0, y: -1.4}
+  buttonVisual: {fileID: 321466866}
+  submitButtonName: Submit
+  pressCooldown: 0.25
+  isPlayerActive: 0
+  isControlFormOut: 1
 --- !u!1 &781269317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,6 +2713,8 @@ GameObject:
   - component: {fileID: 963678957}
   - component: {fileID: 963678961}
   - component: {fileID: 963678960}
+  - component: {fileID: 963678962}
+  - component: {fileID: 963678963}
   m_Layer: 0
   m_Name: DiaryTable
   m_TagString: Untagged
@@ -2862,6 +2870,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boardPrefab: {fileID: 71793621611487015, guid: 5ecbf88a032298947aa10e3bb37aa4f5, type: 3}
   spawnPoint: {fileID: 303673949}
+--- !u!114 &963678962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963678956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4a3bb4778571642a8bd3cc49529d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionKey: 6
+  timeOfDay: 0
+  isBypassAction: 0
+  targetUI: {fileID: 0}
+  DialogueTrigger: {fileID: 0}
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 963678963}
+        m_TargetAssemblyTypeName: SceneButtonTrigger, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &963678963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963678956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f943856d86d9cb419b2b92aa32fdcad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Diary
+  playerSpawnPosition: {x: 0, y: -1.4}
+  buttonVisual: {fileID: 0}
+  submitButtonName: Submit
+  pressCooldown: 0.25
+  isPlayerActive: 0
+  isControlFormOut: 1
 --- !u!1 &1058757835
 GameObject:
   m_ObjectHideFlags: 0
@@ -4445,7 +4504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   morningLight: {fileID: 495729623}
-  eveningLight: {fileID: 495729623}
+  eveningLight: {fileID: 1912661511}
   NightLight: {fileID: 1912661511}
   sky: {fileID: 0}
 --- !u!4 &1510757057

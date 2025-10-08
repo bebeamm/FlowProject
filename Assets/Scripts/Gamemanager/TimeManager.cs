@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class GameTimeManager : MonoBehaviour
+public class TimeManager : MonoBehaviour
 {
-    public static GameTimeManager Instance;
+    public static TimeManager Instance;
 
     [SerializeField] private TimeOfDay timeOfDay;
     public TimeOfDay GetTimeOfDay => timeOfDay;
@@ -12,6 +12,8 @@ public class GameTimeManager : MonoBehaviour
     public int GetDay => day;
 
     [SerializeField] private float timeCount = 0;
+
+    public float GetTimeCount => timeCount;
 
     private bool isTimePause = false;
     public void SetTimePause(bool state) => isTimePause = state;
@@ -38,11 +40,11 @@ public class GameTimeManager : MonoBehaviour
             timeOfDay = TimeOfDay.evening;
         else timeOfDay = TimeOfDay.night;
 
-        if (timeCount >= 480)
-        {
-            timeCount = 0;
-            day++;
-        }
+        //if (timeCount >= 480)
+        //{
+        //    timeCount = 0;
+        //    day++;
+        //}
     }
 
     public void NextDay()

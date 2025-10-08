@@ -20,6 +20,7 @@ public class PlayerInteract : MonoBehaviour
     private InputAction pressUp;
     private InputAction pressDown;
     private InputAction pressX;
+    private InputAction pressSq;
 
 
     public UnityEvent Event;
@@ -29,6 +30,7 @@ public class PlayerInteract : MonoBehaviour
         pressDown = InputSystem.actions.FindAction("Interact/Down");
         pressUp = InputSystem.actions.FindAction("Interact/Up");
         pressX = InputSystem.actions.FindAction("Interact/X");
+        pressSq = InputSystem.actions.FindAction("Interact/Sq");
 
     }
 
@@ -83,7 +85,7 @@ public class PlayerInteract : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton1))
+        if (Input.GetKeyDown(KeyCode.Escape) || pressX.WasPressedThisFrame())
         {
             if (targetUI != null)
             {
@@ -104,7 +106,7 @@ public class PlayerInteract : MonoBehaviour
             return true;
         }else if(timeOfDay != TimeOfDay.none)
         {
-            if(GameTimeManager.Instance.GetTimeOfDay == timeOfDay)
+            if(TimeManager.Instance.GetTimeOfDay == timeOfDay)
                 return true;
             else return false;
         }
@@ -146,9 +148,10 @@ public class PlayerInteract : MonoBehaviour
 
     private bool CheckKey()
     {
-        if(pressUp.WasCompletedThisFrame() && actionKey == keyToAction.Up) return true;
-        else if (pressDown.WasCompletedThisFrame() && actionKey == keyToAction.Down) return true;
-        else if (pressX.WasCompletedThisFrame() && actionKey == keyToAction.X) return true;
+        if(pressUp.WasPressedThisFrame() && actionKey == keyToAction.Up) return true;
+        else if (pressDown.WasPressedThisFrame() && actionKey == keyToAction.Down) return true;
+        else if (pressX.WasPressedThisFrame() && actionKey == keyToAction.X) return true;
+        else if (pressSq.WasPressedThisFrame() && actionKey == keyToAction.Sq) return true;
         else return false;
     }
 }

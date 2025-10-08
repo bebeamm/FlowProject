@@ -7,7 +7,7 @@ public class Sleep : MonoBehaviour
     [SerializeField] private Image fade;
     public void OnSleep()
     {
-        GameTimeManager.Instance.NextDay();
+        TimeManager.Instance.NextDay();
 
         var sequence = DOTween.Sequence();
         sequence.Append(fade.DOFade(1, 1));

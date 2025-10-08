@@ -15,7 +15,7 @@ public class BoardWithDay : MonoBehaviour
 
     private void SetBoardOnDay()
     {
-        int day = GameTimeManager.Instance.GetDay;
+        int day = TimeManager.Instance.GetDay;
 
         for (int i = 0; i < BoardList.Count; i++)
         {

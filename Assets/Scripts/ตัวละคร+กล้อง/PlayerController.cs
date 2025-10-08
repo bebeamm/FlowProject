@@ -22,10 +22,16 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
 
         moveSpeed = startSpeed;
-    }
+        fixedSpeed = startSpeed;
+
+  }
+
+    private float fixedSpeed;
 
     void Update()
     {
+        startSpeed = fixedSpeed - (0.1f * (Mathf.Floor(TimeManager.Instance.GetDay / 3)));
+
         elapsedTime += Time.deltaTime;
 
         float t = Mathf.Clamp01(elapsedTime / slowdownDuration);

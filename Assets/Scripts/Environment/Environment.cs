@@ -15,7 +15,7 @@ public class Environment : MonoBehaviour
 
     private void SetEnv()
     {
-        var TOD = GameTimeManager.Instance.GetTimeOfDay;
+        var TOD = TimeManager.Instance.GetTimeOfDay;
 
         switch (TOD)
         {

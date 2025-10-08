@@ -24,8 +24,6 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private int DialoguePage = 0;
 
-    public bool isDialogueActive = false;
- 
     public float typingSpeed = 0.2f;
  
     public Animator animator;
@@ -89,7 +87,7 @@ public class DialogueManager : MonoBehaviour
 
             previousDialogue();
         }
-        else if (pressX.WasPressedThisFrame())
+        else if (pressX.WasPressedThisFrame() && panel.gameObject.activeSelf)
         {
             EndDialogue();
         }
@@ -120,22 +118,22 @@ public class DialogueManager : MonoBehaviour
 
         if(DialoguePage >= lines.Count)
         {
-            //DialoguePage = 0;
-            //EndDialogue();
+            DialoguePage = 0;
+            EndDialogue();
             return;
         }
 
         DisplayNextDialogueLine(lines[DialoguePage]);
     }
 
-    public void StartDialogueDay(DialogueDayList dialogueDayList,bool dialogue = false)
+    public void StartDialogueDay(DialogueDayList dialogueDayList,bool shopDialogue = false)
     {
         if (ShopPanel.Instance.isShopActive)
             return;
 
-        int day = GameTimeManager.Instance.GetDay;
+        int day = TimeManager.Instance.GetDay;
 
-        isShopDialogue = dialogue;
+        isShopDialogue = shopDialogue;
 
         for (int i = 0; i < dialogueDayList.dayLists.Count; i++)
         {
@@ -161,11 +159,11 @@ public class DialogueManager : MonoBehaviour
 
         GameManager.Instance.PlayerController.enabled = false;
 
-        isDialogueActive = true;
-
         panel.gameObject.SetActive(true);
 
         animator.Play("show");
+
+        panel.OnShop(isShopDialogue);
  
         //lines.Clear();
 
@@ -175,7 +173,7 @@ public class DialogueManager : MonoBehaviour
 
         DisplayNextDialogueLine(lines[DialoguePage]);
 
-        //foreach (DialogueLine dialogueLine in dialogue.dialogueLines)
+        //foreach (DialogueLine dialogueLine in shopDialogue.dialogueLines)
         //{
         //    lines.Enqueue(dialogueLine);
         //}
@@ -218,7 +216,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         OnEndDialogue?.Invoke();
-        isDialogueActive = false;
+        OnEndDialogue = null;
         isShopDialogue = false;
         GameManager.Instance.PlayerController.enabled = true;
         animator.Play("hide");
