@@ -36,7 +36,7 @@ public class NongBuaManager : MonoBehaviour
 
         if (isWaitingTime)
         {
-            timeWaiting += Time.deltaTime *5f;
+            timeWaiting += Time.deltaTime;
             if (timeWaiting >= 10)
             {
                 timeWaiting = 0;

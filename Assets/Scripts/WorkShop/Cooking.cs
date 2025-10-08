@@ -17,13 +17,20 @@ public class Cooking : MonoBehaviour
     [SerializeField] private TMP_Text eggAmountLabel;
     [SerializeField] private TMP_Text pandanAmountLabel;
 
+    [SerializeField] private SceneButtonTrigger SceneButtonTrigger;
+
     private InputAction pressLeft;
     private InputAction pressRight;
+    private InputAction pressX;
+
+    private bool panIsCooking;
+    private bool potIsCooking;
 
     private void Awake()
     {
         pressLeft = InputSystem.actions.FindAction("Interact/Left");
         pressRight = InputSystem.actions.FindAction("Interact/Right");
+        pressX = InputSystem.actions.FindAction("Interact/X");
 
         SetAmount();
     }
@@ -39,6 +46,11 @@ public class Cooking : MonoBehaviour
         {
             CookPot();
         }
+
+        if(pressX.WasPressedThisFrame() && !panIsCooking && !potIsCooking)
+        {
+            SceneButtonTrigger.ChangeScene();
+        }
     }
 
     private void SetAmount()
@@ -49,6 +61,7 @@ public class Cooking : MonoBehaviour
 
     private void CookPan()
     {
+        panIsCooking = true;
         panStartCook.SetActive(false);
         panAnimator.SetBool("cook", true);
         gasPan.transform.DORotate(new Vector3(0, 0, 1) * 90, 0.5f);
@@ -60,6 +73,7 @@ public class Cooking : MonoBehaviour
 
     private void CompleteCookPan()
     {
+        panIsCooking = false;
         panStartCook.SetActive(true);
         panAnimator.SetBool("cook", false);
         gasPan.transform.DORotate(Vector3.zero, 0.5f);
@@ -67,6 +81,7 @@ public class Cooking : MonoBehaviour
 
     private void CookPot()
     {
+        potIsCooking = true;
         potStartCook.SetActive(false);
         potAnimator.SetBool("cook", true);
         gasPot.transform.DORotate(new Vector3(0, 0, -1) * 90, 0.5f);
@@ -78,6 +93,7 @@ public class Cooking : MonoBehaviour
 
     private void CompleteCookPot()
     {
+        potIsCooking = false;
         potStartCook.SetActive(true);
         potAnimator.SetBool("cook", false);
         gasPot.transform.DORotate(Vector3.zero, 0.5f);

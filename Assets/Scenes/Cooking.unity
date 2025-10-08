@@ -1313,6 +1313,7 @@ MonoBehaviour:
   gasPot: {fileID: 1461005511}
   eggAmountLabel: {fileID: 2020023461}
   pandanAmountLabel: {fileID: 711781286}
+  SceneButtonTrigger: {fileID: 1890201534}
 --- !u!1 &1419718332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,7 +1927,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890201532}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c4a3bb4778571642a8bd3cc49529d68, type: 3}
   m_Name: 
