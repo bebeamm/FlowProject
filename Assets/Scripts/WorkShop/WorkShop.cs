@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -60,7 +61,6 @@ public class WorkShop : MonoBehaviour
         if (InventoryManager.Instance.GetTape <= 0 || InventoryManager.Instance.GetPaper <= 0|| isReset)
             return;
 
-
         if (step + 1 >= paperSpriteList.Count)
         {
             //step = 0;
@@ -68,7 +68,13 @@ public class WorkShop : MonoBehaviour
             return;
         }
 
+
         paperSpriteList[step].DOFade(0,1f);
+        StartCoroutine(DelayActive(paperSpriteList[step].gameObject, false, 1f));
+        StartCoroutine(DelayOpenChild(paperSpriteList[step].gameObject,false,0.1f));
+
+        paperSpriteList[step + 1].gameObject.SetActive(true);
+        StartCoroutine(DelayOpenChild(paperSpriteList[step + 1].gameObject, true, 1f));
         paperSpriteList[step + 1].DOFade(1, 1f);
 
         step ++;
@@ -78,19 +84,40 @@ public class WorkShop : MonoBehaviour
             Invoke(nameof(ReSetToFirst), 1f);                     
             Done();      
         }
+    }
 
+    public IEnumerator DelayActive(GameObject gameObject,bool state, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        gameObject.SetActive(state);
+    }
+
+    
+
+    private IEnumerator DelayOpenChild(GameObject gameObject, bool state, float delayTime)
+    {
+        var child = gameObject.transform.GetChild(0);
+        yield return new WaitForSeconds(delayTime);
+        child.gameObject.SetActive(state);
+        Debug.Log(child.name);
     }
 
     public void ReSetToFirst()
     {
         if(InventoryManager.Instance.GetPaper > 0)
         {
+            paperSpriteList[0].gameObject.SetActive(true);
             paperSpriteList[0].DOFade(1,1f);
+            StartCoroutine(DelayOpenChild(paperSpriteList[0].gameObject, true, 1f));
+
             paperSpriteList[paperSpriteList.Count - 1].DOFade(0, 1f);
+            StartCoroutine(DelayOpenChild(paperSpriteList[paperSpriteList.Count - 1].gameObject, false, 1f));
         }
         else
         {
             paperSpriteList[paperSpriteList.Count - 1].DOFade(0, 1f);
+            //StartCoroutine(DelayOpenChild(paperSpriteList[paperSpriteList.Count - 1].gameObject, false, 1f));
+            paperSpriteList[0].gameObject.SetActive(false);
         }
 
         isReset = false;
