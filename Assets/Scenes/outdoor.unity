@@ -5654,7 +5654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7614b1a5f0a5afd4fb3d6dc46ec5f7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardPrefab: {fileID: 6445211346754119590, guid: c2780f925d3163447a017ef381a022d2, type: 3}
+  boardPrefab: {fileID: 6976561957934492009, guid: 8178d9bb9a011864d922d801718d31d3, type: 3}
   spawnPoint: {fileID: 2067305926}
 --- !u!1 &1367258372
 GameObject:
@@ -8561,6 +8561,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 699100020627482395, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: money
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 988843517156024348, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
       propertyPath: m_Name
       value: Gamemanager
@@ -8613,6 +8617,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8679569921559793096, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7fee4dd69b7f69e4a8515d3af92872a3, type: 3}
     - target: {fileID: 8888781584698854454, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
       propertyPath: SceneButtonTrigger
       value: 
