@@ -1681,7 +1681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Cooking
-  playerSpawnPosition: {x: 5.3, y: -1.4}
+  playerSpawnPosition: {x: 0, y: -0.65}
   buttonVisual: {fileID: 0}
   submitButtonName: Submit
   pressCooldown: 0.25
@@ -2902,7 +2902,7 @@ Transform:
   m_GameObject: {fileID: 2035346363}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.013915293, w: 0.9999032}
-  m_LocalPosition: {x: 0.568, y: 0.148, z: 0.3759622}
+  m_LocalPosition: {x: 0.572, y: 0.255, z: 0.3759622}
   m_LocalScale: {x: 0.040916633, y: 0.030581933, z: 0.27332312}
   m_ConstrainProportionsScale: 0
   m_Children: []
