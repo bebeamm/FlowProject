@@ -18,7 +18,7 @@ MonoBehaviour:
   - Day: 2
     Dialogue: {fileID: 11400000, guid: 85daab65bc8d76b4bae70dcbb2153434, type: 2}
   - Day: 3
-    Dialogue: {fileID: 11400000, guid: 85daab65bc8d76b4bae70dcbb2153434, type: 2}
+    Dialogue: {fileID: 11400000, guid: 7ff422771ef897a4ebb2f661627e6500, type: 2}
   - Day: 4
     Dialogue: {fileID: 11400000, guid: 85daab65bc8d76b4bae70dcbb2153434, type: 2}
   - Day: 5

@@ -1646,6 +1646,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 445765411400286667, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: typingSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 988843517156024348, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
       propertyPath: m_Name
       value: Gamemanager
