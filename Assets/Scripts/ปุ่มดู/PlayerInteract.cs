@@ -6,6 +6,7 @@ public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private keyToAction actionKey;
     [SerializeField] private TimeOfDay timeOfDay;
+    [SerializeField] private TimeOfDay timeOfDay2;
     [SerializeField] private bool isBypassAction = false;
 
     public GameObject targetUI;
@@ -65,7 +66,7 @@ public class PlayerInteract : MonoBehaviour
             Event.Invoke();
         }
 
-        if (playerInside && (Input.GetKeyDown(KeyCode.Return) || CheckKey()) && CheckTime(timeOfDay))
+        if (playerInside && (Input.GetKeyDown(KeyCode.Return) || CheckKey()) && CheckTime(timeOfDay,timeOfDay2))
         {
             Event?.Invoke();
 
@@ -109,14 +110,14 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-    private bool CheckTime(TimeOfDay timeOfDay)
+    private bool CheckTime(TimeOfDay timeOfDay, TimeOfDay timeOfDay2)
     {
         if (timeOfDay == TimeOfDay.none)
         {
             return true;
         }else if(timeOfDay != TimeOfDay.none)
         {
-            if(TimeManager.Instance.GetTimeOfDay == timeOfDay)
+            if(TimeManager.Instance.GetTimeOfDay == timeOfDay || TimeManager.Instance.GetTimeOfDay == timeOfDay2)
                 return true;
             else return false;
         }
