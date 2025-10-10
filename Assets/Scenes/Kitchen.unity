@@ -741,7 +741,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.29354268, y: 0.33582103}
+  m_Offset: {x: 0.4505474, y: 0.33582103}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -752,7 +752,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.44004047, y: 0.7095126}
+  m_Size: {x: 0.4086399, y: 0.7095126}
   m_EdgeRadius: 0
 --- !u!4 &410511621
 Transform:
@@ -1699,6 +1699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7614b1a5f0a5afd4fb3d6dc46ec5f7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeOfDay: 0
+  TimeOfDay2: 0
   boardPrefab: {fileID: 4603782860172158627, guid: ea927e4ebdcca3746b7af3d7f684237b, type: 3}
   spawnPoint: {fileID: 86479100}
 --- !u!114 &1109089054
@@ -1715,6 +1717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionKey: 6
   timeOfDay: 0
+  timeOfDay2: 0
   isBypassAction: 0
   targetUI: {fileID: 0}
   DialogueTrigger: {fileID: 0}
@@ -1930,7 +1933,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 16
+  m_SortingOrder: 14
   m_Sprite: {fileID: 986378211, guid: 99136f2289c62bd41924801b577bf544, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2881,7 +2884,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 16
+  m_SortingOrder: 14
   m_Sprite: {fileID: 986378211, guid: 99136f2289c62bd41924801b577bf544, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -690,6 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeOfDay: 1
+  TimeOfDay2: 2
   boardPrefab: {fileID: 43082591399236159, guid: 403ccc5672e24c741a42825a73e286ab, type: 3}
   spawnPoint: {fileID: 336907134}
 --- !u!114 &87765853
@@ -725,6 +726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionKey: 0
   timeOfDay: 1
+  timeOfDay2: 0
   isBypassAction: 0
   targetUI: {fileID: 0}
   DialogueTrigger: {fileID: 0}
@@ -2155,6 +2157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeOfDay: 3
+  TimeOfDay2: 0
   boardPrefab: {fileID: 43082591399236159, guid: 403ccc5672e24c741a42825a73e286ab, type: 3}
   spawnPoint: {fileID: 781269318}
 --- !u!61 &761381259
@@ -2216,6 +2219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionKey: 0
   timeOfDay: 3
+  timeOfDay2: 0
   isBypassAction: 0
   targetUI: {fileID: 0}
   DialogueTrigger: {fileID: 0}
@@ -2645,6 +2649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeOfDay: 0
+  TimeOfDay2: 0
   boardPrefab: {fileID: 5192278173134091710, guid: e5a75c21dfce0474eaaf5ceb93217e45, type: 3}
   spawnPoint: {fileID: 303673949}
 --- !u!114 &963678962
@@ -2661,6 +2666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionKey: 6
   timeOfDay: 0
+  timeOfDay2: 0
   isBypassAction: 0
   targetUI: {fileID: 0}
   DialogueTrigger: {fileID: 0}
@@ -4986,6 +4992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeOfDay: 0
+  TimeOfDay2: 0
   boardPrefab: {fileID: 6445211346754119590, guid: c2780f925d3163447a017ef381a022d2, type: 3}
   spawnPoint: {fileID: 938190458}
 --- !u!114 &2007925905
@@ -5016,6 +5023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionKey: 1
   timeOfDay: 0
+  timeOfDay2: 0
   isBypassAction: 0
   targetUI: {fileID: 0}
   DialogueTrigger: {fileID: 2007925905}
