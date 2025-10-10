@@ -5,9 +5,9 @@ public class PlayerController : MonoBehaviour
    
     public float startSpeed = 2f;        
     public float minSpeed = 0.3f;        
-    public float slowdownDuration = 30f;
+    float slowdownDuration = 30f;
 
-    private float moveSpeed;            
+    private float moveSpeed;            
     private float elapsedTime = 0f;    
 
     private Rigidbody2D rb;
@@ -24,18 +24,20 @@ public class PlayerController : MonoBehaviour
         moveSpeed = startSpeed;
         fixedSpeed = startSpeed;
 
-  }
+    }
 
     private float fixedSpeed;
 
     void Update()
     {
-        startSpeed = fixedSpeed - (0.1f * (Mathf.Floor(TimeManager.Instance.GetDay / 3)));
+        int steps = Mathf.FloorToInt((TimeManager.Instance.GetDay - 1) / 3f);
 
-        elapsedTime += Time.deltaTime;
+        startSpeed = fixedSpeed - steps * 0.1f;
+
+        elapsedTime += Time.deltaTime;
 
         float t = Mathf.Clamp01(elapsedTime / slowdownDuration);
-        moveSpeed = Mathf.Lerp(startSpeed, minSpeed, t);
+        moveSpeed = Mathf.Lerp(startSpeed, minSpeed, t);
 
        
         float leftX = Input.GetAxisRaw("Horizontal");
@@ -56,6 +58,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput.x * startSpeed, rb.velocity.y);
     }
 }
