@@ -39,6 +39,8 @@ public class PlayerInteract : MonoBehaviour
         pressX = InputSystem.actions.FindAction("Interact/X");
         pressSq = InputSystem.actions.FindAction("Interact/Sq");
         pressTri = InputSystem.actions.FindAction("Interact/Tri");
+        pressO = InputSystem.actions.FindAction("Interact/O");
+
 
     }
 
