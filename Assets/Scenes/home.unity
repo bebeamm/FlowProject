@@ -2213,7 +2213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionKey: 0
-  timeOfDay: 2
+  timeOfDay: 3
   isBypassAction: 0
   targetUI: {fileID: 0}
   DialogueTrigger: {fileID: 0}

@@ -533,11 +533,7 @@ MonoBehaviour:
   player: {fileID: 623902343}
   fade: {fileID: 1559002941}
   sceneButtonTrigger: {fileID: 965374029}
-  videoClips:
-  - day: 1
-    videoClip: {fileID: 32900000, guid: 6671f9836fd89bc41b82d47c66a82cd1, type: 3}
-  - day: 3
-    videoClip: {fileID: 32900000, guid: 62a661b39ecb13b40b5499298039a996, type: 3}
+  videoClips: []
 --- !u!1 &1218559543
 GameObject:
   m_ObjectHideFlags: 0

@@ -528,6 +528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 160161890}
   - component: {fileID: 160161889}
+  - component: {fileID: 160161891}
   m_Layer: 0
   m_Name: GrandJun
   m_TagString: Untagged
@@ -565,6 +566,20 @@ Transform:
   - {fileID: 1351185238}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &160161891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160161888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0471dbe55555324b85cc6c03bc08357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeSpawn: 2
+  obj: {fileID: 0}
 --- !u!1 &167469853
 GameObject:
   m_ObjectHideFlags: 0
@@ -4488,7 +4503,7 @@ MonoBehaviour:
   animator: {fileID: 1108465685}
   canBuyDialogue: {fileID: 11400000, guid: c79531faa3297e4488efe93ddff93ef2, type: 2}
   cantBuyDialogue: {fileID: 11400000, guid: ce415949d344e144eab7dd673a5bae1f, type: 2}
-  DayCome: 000000000000000000000000000000000000000000000000000000000000
+  DayCome: 010101000101010001000101010100010101010101010001000000000000
   isCome: 0
 --- !u!1 &1163624650
 GameObject:
@@ -5640,7 +5655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc7cfe4d1fd17b641a2f2db72c058c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: d8a4e5b0cbb36324f9667b346b907fa0, type: 2}
+  dialogue: {fileID: 11400000, guid: 6acded66244cab84b93a5c722efdc36f, type: 2}
   isShopDialogue: 1
 --- !u!114 &1351185242
 MonoBehaviour:
@@ -8690,6 +8705,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3754702203900975979, guid: 224e6e94ae9f4ba4cbbdef93201e005e, type: 3}
+      propertyPath: minSpeed
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 5371204023199170557, guid: 224e6e94ae9f4ba4cbbdef93201e005e, type: 3}
       propertyPath: m_Name
       value: Player
