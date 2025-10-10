@@ -1938,8 +1938,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4a3bb4778571642a8bd3cc49529d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionKey: 1
-  timeOfDay: 0
+  actionKey: 7
+  timeOfDay: 2
   timeOfDay2: 0
   isBypassAction: 0
   targetUI: {fileID: 0}
@@ -1973,7 +1973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeOfDay: 0
   TimeOfDay2: 0
-  boardPrefab: {fileID: 6445211346754119590, guid: c2780f925d3163447a017ef381a022d2, type: 3}
+  boardPrefab: {fileID: 6976561957934492009, guid: 8178d9bb9a011864d922d801718d31d3, type: 3}
   spawnPoint: {fileID: 1665062615}
 --- !u!1 &546175529
 GameObject:
@@ -4935,7 +4935,7 @@ MonoBehaviour:
   canBuyDialogue: {fileID: 11400000, guid: c79531faa3297e4488efe93ddff93ef2, type: 2}
   cantBuyDialogue: {fileID: 11400000, guid: ce415949d344e144eab7dd673a5bae1f, type: 2}
   DayCome: 010101000101010001000101010100010101010101010001000000000000
-  isCome: 0
+  isCome: 1
 --- !u!1 &1163624650
 GameObject:
   m_ObjectHideFlags: 0
