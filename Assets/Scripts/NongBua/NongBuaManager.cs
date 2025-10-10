@@ -78,7 +78,7 @@ public class NongBuaManager : MonoBehaviour
         }
 
         InventoryManager.Instance.AddPaper(20);
-        InventoryManager.Instance.AddTape(5);
+        InventoryManager.Instance.AddTape(10);
     }
 
     public void EndComeIn()
@@ -135,25 +135,25 @@ public class NongBuaManager : MonoBehaviour
             return;
         }
 
-        // »éÍ§¡Ñ¹¨Ó¹Ç¹à¡Ô¹¢¹Ò´ list
+        // ï¿½ï¿½Í§ï¿½Ñ¹ï¿½Ó¹Ç¹ï¿½Ô¹ï¿½ï¿½Ò´ list
         countToTrue = Mathf.Clamp(countToTrue, 0, boolList.Count);
 
-        // ÃÕà«çµ·Ñé§ËÁ´à»ç¹ false ¡èÍ¹ (¶éÒµéÍ§¡ÒÃ)
+        // ï¿½ï¿½ï¿½çµ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ false ï¿½ï¿½Í¹ (ï¿½ï¿½Òµï¿½Í§ï¿½ï¿½ï¿½)
         for (int i = 0; i < boolList.Count; i++)
             boolList[i] = false;
 
-        // ÊÃéÒ§ÃÒÂ¡ÒÃ index ·Ñé§ËÁ´
+        // ï¿½ï¿½ï¿½Ò§ï¿½ï¿½Â¡ï¿½ï¿½ index ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         List<int> availableIndices = new List<int>();
         for (int i = 0; i < boolList.Count; i++)
             availableIndices.Add(i);
 
-        // ÊØèÁ index áÅéÇµÑé§à»ç¹ true
+        // ï¿½ï¿½ï¿½ï¿½ index ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ true
         for (int i = 0; i < countToTrue; i++)
         {
             int randomIndex = Random.Range(0, availableIndices.Count);
             int chosen = availableIndices[randomIndex];
             boolList[chosen] = true;
-            availableIndices.RemoveAt(randomIndex); // àÍÒÍÍ¡à¾×èÍäÁèãËé«éÓ
+            availableIndices.RemoveAt(randomIndex); // ï¿½ï¿½ï¿½ï¿½Í¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         }
     }
 }

@@ -36,7 +36,7 @@ public class Environment : MonoBehaviour
                     eveningLight.SetActive(true);
 
                     if (sky != null)
-                        sky.color = Color.white;
+                        sky.color = new Color32(0xC9, 0xC0, 0xEC, 0xFF);
             }
             break;
             case TimeOfDay.night:
