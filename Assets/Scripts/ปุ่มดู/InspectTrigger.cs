@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class InspectTrigger : MonoBehaviour
 {  
+    public TimeOfDay TimeOfDay;
     public GameObject boardPrefab;
     public Transform spawnPoint;
     private GameObject currentBoard;
@@ -10,7 +11,7 @@ public class InspectTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (boardPrefab != null && currentBoard == null)
+            if (boardPrefab != null && currentBoard == null && (TimeOfDay == TimeManager.Instance.GetTimeOfDay || TimeOfDay == TimeOfDay.none))
             {
                 currentBoard = Instantiate(boardPrefab, spawnPoint.position, Quaternion.identity);
             }
