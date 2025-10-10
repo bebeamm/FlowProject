@@ -19,7 +19,11 @@ public class PlayerInteract : MonoBehaviour
 
     private InputAction pressUp;
     private InputAction pressDown;
+    private InputAction pressLeft;
+    private InputAction pressRight;
+
     private InputAction pressX;
+    private InputAction pressO;
     private InputAction pressSq;
     private InputAction pressTri;
 
@@ -30,10 +34,11 @@ public class PlayerInteract : MonoBehaviour
     {
         pressDown = InputSystem.actions.FindAction("Interact/Down");
         pressUp = InputSystem.actions.FindAction("Interact/Up");
+        pressLeft = InputSystem.actions.FindAction("Interact/Left");
+        pressRight = InputSystem.actions.FindAction("Interact/Right");
         pressX = InputSystem.actions.FindAction("Interact/X");
         pressSq = InputSystem.actions.FindAction("Interact/Sq");
-            pressSq = InputSystem.actions.FindAction("Interact/Tri");
-
+        pressTri = InputSystem.actions.FindAction("Interact/Tri");
 
     }
 
@@ -152,10 +157,14 @@ public class PlayerInteract : MonoBehaviour
     private bool CheckKey()
     {
         if(pressUp.WasPressedThisFrame() && actionKey == keyToAction.Up) return true;
+        else if (pressLeft.WasPressedThisFrame() && actionKey == keyToAction.Left) return true;
         else if (pressDown.WasPressedThisFrame() && actionKey == keyToAction.Down) return true;
+        else if (pressRight.WasPressedThisFrame() && actionKey == keyToAction.Right) return true;
         else if (pressX.WasPressedThisFrame() && actionKey == keyToAction.X) return true;
         else if (pressSq.WasPressedThisFrame() && actionKey == keyToAction.Sq) return true;
         else if (pressTri.WasPressedThisFrame() && actionKey == keyToAction.Tri) return true;
+        else if (pressO.WasPressedThisFrame() && actionKey == keyToAction.O) return true;
+
 
         else return false;
     }
