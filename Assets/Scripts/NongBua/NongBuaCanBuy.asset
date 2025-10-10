@@ -15,5 +15,11 @@ MonoBehaviour:
   dayLists:
   - Day: 1
     Dialogue: {fileID: 11400000, guid: d3dfd233a47770a40ae1d4e7ff0191ff, type: 2}
+  - Day: 2
+    Dialogue: {fileID: 11400000, guid: 85daab65bc8d76b4bae70dcbb2153434, type: 2}
   - Day: 3
+    Dialogue: {fileID: 11400000, guid: 85daab65bc8d76b4bae70dcbb2153434, type: 2}
+  - Day: 4
+    Dialogue: {fileID: 11400000, guid: 85daab65bc8d76b4bae70dcbb2153434, type: 2}
+  - Day: 5
     Dialogue: {fileID: 11400000, guid: 85daab65bc8d76b4bae70dcbb2153434, type: 2}

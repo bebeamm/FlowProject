@@ -10,14 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7897ed10ef9a0cf4aabe4b92bc6f92f8, type: 3}
-  m_Name: CanBuyDialoueDay3
+  m_Name: CanBuyd2
   m_EditorClassIdentifier: 
   dialogueLines:
   - character:
-      name: "\u0E0D\u0E32\u0E15\u0E34"
+      name: "\u0E1A\u0E31\u0E27"
       icon: {fileID: -850659272, guid: 45a492e09ddaf054d81b7b9ef0e87786, type: 3}
-    line: "\u0E17\u0E33\u0E44\u0E14\u0E49\u0E14\u0E35\u0E40\u0E25\u0E22 \u0E21\u0E32\u0E01\u0E01\u0E01\u0E01\u0E01\u0E01\u0E01\u0E01\u0E01\u0E01\u0E01"
-  - character:
-      name: "\u0E0D\u0E32\u0E15\u0E34"
-      icon: {fileID: -850659272, guid: 45a492e09ddaf054d81b7b9ef0e87786, type: 3}
-    line: "\u0E02\u0E2D\u0E1A\u0E04\u0E38\u0E13\u0E19\u0E30"
+    line: "\u0E02\u0E2D\u0E1A\u0E04\u0E38\u0E13\u0E21\u0E32\u0E01 \u0E46 \u0E40\u0E25\u0E22\u0E08\u0E49\u0E30"

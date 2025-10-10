@@ -577,7 +577,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 16
   m_Sprite: {fileID: 1668986262, guid: ccf1074379536ad4d92685fda17f5b73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -1536,6 +1536,8 @@ MonoBehaviour:
   buttonVisual: {fileID: 95770421}
   submitButtonName: Submit
   pressCooldown: 0.25
+  isPlayerActive: 1
+  isControlFormOut: 0
 --- !u!61 &708530306
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2369,7 +2371,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 1.5
   minSpeed: 0.9
-  slowdownDuration: 350
 --- !u!95 &1064245915
 Animator:
   serializedVersion: 5
@@ -3350,7 +3351,7 @@ Transform:
   m_GameObject: {fileID: 1544075922}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -72.94, y: 0, z: 0}
+  m_LocalPosition: {x: -69.94, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 12.7155, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4538,7 +4539,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 8
+  m_SortingOrder: 16
   m_Sprite: {fileID: -706001683, guid: 2168cd497adc9d4448b79f89b45ec0ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4593,7 +4594,7 @@ Transform:
   m_GameObject: {fileID: 1940608813}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.14, y: 0, z: 0}
+  m_LocalPosition: {x: -27.8, y: 0, z: 0}
   m_LocalScale: {x: 3.2783806, y: 12.7155, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
