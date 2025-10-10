@@ -10,6 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7897ed10ef9a0cf4aabe4b92bc6f92f8, type: 3}
-  m_Name: shopd1
+  m_Name: shopd8
   m_EditorClassIdentifier: 
-  dialogueLines: []
+  dialogueLines:
+  - character:
+      name: "\u0E22\u0E32\u0E22\u0E1A\u0E38\u0E0D"
+      icon: {fileID: 11586557, guid: 3f84fb1af3ab7fe4b8512a7d7b93b511, type: 3}
+    line: "\u0E40\u0E2D\u2026\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E01\u0E35\u0E49\u0E09\u0E31\u0E19\u0E27\u0E48\u0E32\u0E08\u0E30\u0E1E\u0E39\u0E14\u0E2D\u0E30\u0E44\u0E23\u0E19\u0E30"

@@ -5595,7 +5595,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.15316033, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5606,7 +5606,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.01, y: 10.77}
+  m_Size: {x: 9.9200325, y: 10.77}
   m_EdgeRadius: 0
 --- !u!114 &1351185240
 MonoBehaviour:
@@ -5620,7 +5620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4a3bb4778571642a8bd3cc49529d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionKey: 1
+  actionKey: 7
   timeOfDay: 0
   isBypassAction: 1
   targetUI: {fileID: 0}
@@ -8557,6 +8557,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 158101416730033347, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 28.000027
+      objectReference: {fileID: 0}
     - target: {fileID: 574099720718791176, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
       propertyPath: m_Camera
       value: 
@@ -8568,6 +8572,30 @@ PrefabInstance:
     - target: {fileID: 988843517156024348, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
       propertyPath: m_Name
       value: Gamemanager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212000183138115008, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.840154
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212000183138115008, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8158233
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212000183138115008, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8077458
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212000183138115008, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 74
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212000183138115008, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -380
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383190037001592924, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5233879753202133365, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8609,6 +8637,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7528287803292412801, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 77
+      objectReference: {fileID: 0}
+    - target: {fileID: 7740203490409308991, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -221.99997
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032725205735893993, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8.682312
+      objectReference: {fileID: 0}
     - target: {fileID: 8496816746962778291, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -841
@@ -8620,7 +8660,11 @@ PrefabInstance:
     - target: {fileID: 8679569921559793096, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7fee4dd69b7f69e4a8515d3af92872a3, type: 3}
+      objectReference: {fileID: 21300000, guid: c8cfbfacadb0079438cc625d80159422, type: 3}
+    - target: {fileID: 8801995231922010997, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 54.495724
+      objectReference: {fileID: 0}
     - target: {fileID: 8888781584698854454, guid: 4983a52a3a0fb0c48933ad918df44ad4, type: 3}
       propertyPath: SceneButtonTrigger
       value: 

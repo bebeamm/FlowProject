@@ -21,6 +21,7 @@ public class PlayerInteract : MonoBehaviour
     private InputAction pressDown;
     private InputAction pressX;
     private InputAction pressSq;
+    private InputAction pressTri;
 
 
     public UnityEvent Event;
@@ -31,6 +32,8 @@ public class PlayerInteract : MonoBehaviour
         pressUp = InputSystem.actions.FindAction("Interact/Up");
         pressX = InputSystem.actions.FindAction("Interact/X");
         pressSq = InputSystem.actions.FindAction("Interact/Sq");
+            pressSq = InputSystem.actions.FindAction("Interact/Tri");
+
 
     }
 
@@ -152,6 +155,8 @@ public class PlayerInteract : MonoBehaviour
         else if (pressDown.WasPressedThisFrame() && actionKey == keyToAction.Down) return true;
         else if (pressX.WasPressedThisFrame() && actionKey == keyToAction.X) return true;
         else if (pressSq.WasPressedThisFrame() && actionKey == keyToAction.Sq) return true;
+        else if (pressTri.WasPressedThisFrame() && actionKey == keyToAction.Tri) return true;
+
         else return false;
     }
 }
