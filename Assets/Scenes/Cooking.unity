@@ -284,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 87017523}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.77, y: -4.42, z: 0}
+  m_LocalPosition: {x: -0.77, y: -4.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -534,7 +534,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4.31, z: 0}
-  m_LocalScale: {x: 0.5793134, y: 1.4730654, z: 1.2240231}
+  m_LocalScale: {x: 0.5966928, y: 1.6056414, z: 1.2240231}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1966,7 +1966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Kitchen
-  playerSpawnPosition: {x: 5.3, y: -1.1}
+  playerSpawnPosition: {x: 5.3, y: -0.6}
   buttonVisual: {fileID: 0}
   submitButtonName: Submit
   pressCooldown: 0.25

@@ -99,7 +99,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5371204023199170557}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -198,7 +198,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 2
   minSpeed: 0.9
-  slowdownDuration: 350
 --- !u!82 &1711214886733869361
 AudioSource:
   m_ObjectHideFlags: 0
