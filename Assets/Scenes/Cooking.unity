@@ -1934,6 +1934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionKey: 4
   timeOfDay: 0
+  timeOfDay2: 0
   isBypassAction: 1
   targetUI: {fileID: 0}
   DialogueTrigger: {fileID: 0}
@@ -1965,7 +1966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Kitchen
-  playerSpawnPosition: {x: 5.3, y: -1.4}
+  playerSpawnPosition: {x: 5.3, y: -1.1}
   buttonVisual: {fileID: 0}
   submitButtonName: Submit
   pressCooldown: 0.25

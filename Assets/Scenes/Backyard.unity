@@ -482,7 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   morningObject: {fileID: 1815965802}
   eveningObject: {fileID: 1113869139}
-  nightObject: {fileID: 0}
+  nightObject: {fileID: 109518642}
 --- !u!4 &81487615
 Transform:
   m_ObjectHideFlags: 0
@@ -649,7 +649,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5a36ee44ca83664459fbc80a2be1a595, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1116,7 +1116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   morningLight: {fileID: 1022076065}
   eveningLight: {fileID: 1418340280}
-  NightLight: {fileID: 1780327575}
+  NightLight: {fileID: 0}
   sky: {fileID: 460233504}
 --- !u!4 &361344225
 Transform:
@@ -1183,7 +1183,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5a36ee44ca83664459fbc80a2be1a595, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 78ac746251ea19a4c9ccf2c43cf9cbab, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
