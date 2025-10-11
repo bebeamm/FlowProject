@@ -1701,7 +1701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeOfDay: 0
   TimeOfDay2: 0
-  boardPrefab: {fileID: 4603782860172158627, guid: ea927e4ebdcca3746b7af3d7f684237b, type: 3}
+  boardPrefab: {fileID: 5192278173134091710, guid: e5a75c21dfce0474eaaf5ceb93217e45, type: 3}
   spawnPoint: {fileID: 86479100}
 --- !u!114 &1109089054
 MonoBehaviour:
