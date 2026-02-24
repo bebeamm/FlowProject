@@ -5,23 +5,45 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class ShopPanel : MonoBehaviour
+[System.Serializable]
+public class ShopItem
 {
-    public static ShopPanel Instance;
+    public ItemType itemType;
+    public int price;
+    public int amount = 5;
 
+    [Header("Slot Images")]
+    public Image normalSlotImage;   // ภาพปกติ
+    public Image hoverSlotImage;    // ภาพตอนถูกเลือก
+
+    public TMP_Text priceText;
+}
+
+public class Shop : MonoBehaviour
+{
+    public static Shop Instance;
+
+    [Header("Main")]
     [SerializeField] GameObject panel;
     [SerializeField] CanvasGroup canvasGroup;
-    [SerializeField] TMP_Text moneyLabel;
+
+    [Header("Items")]
+    [SerializeField] private List<ShopItem> items;   // ใส่สินค้าแต่ละช่องตรงนี้
+    [SerializeField] private Color normalColor = Color.white;
+    [SerializeField] private Color hoverColor = new Color(0.7f, 0.85f, 1f);
+    [SerializeField] private int columnCount = 3;
+
+    private int selectIndex = 0;
+
+    [Header("Confirm")]
     [SerializeField] GameObject confirmPanel;
     [SerializeField] Image confirmButton;
     [SerializeField] Image cancelButton;
 
-    [SerializeField] private int selectIndex = 0;
-
-    [SerializeField] private List<Toggle> toggles;
-
     private InputAction pressLeft;
     private InputAction pressRight;
+    private InputAction pressUp;
+    private InputAction pressDown;
     private InputAction pressX;
     private InputAction pressSqr;
 
@@ -35,65 +57,124 @@ public class ShopPanel : MonoBehaviour
         pressX = InputSystem.actions.FindAction("Interact/X");
         pressLeft = InputSystem.actions.FindAction("Interact/Left");
         pressRight = InputSystem.actions.FindAction("Interact/Right");
+        pressUp = InputSystem.actions.FindAction("Interact/Up");
+        pressDown = InputSystem.actions.FindAction("Interact/Down");
         pressSqr = InputSystem.actions.FindAction("Interact/Sq");
+    }
+
+    private void Start()
+    {
+        UpdateSelectionVisual();
+        UpdatePriceTexts();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || pressLeft.WasPressedThisFrame())
-        {
-            previousSelect();
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || pressRight.WasPressedThisFrame())
-        {
-            nextSelect();
-        }
+        if (!panel.activeSelf) return;
 
-        if (confirmPanel.activeSelf)
+        if (!confirmPanel.activeSelf)
         {
-            if (pressSqr.WasPressedThisFrame())
-            {
-                confirmBuy();
-                //buyItem(selectIndex);
-            }
+            if (Pressed(pressLeft, KeyCode.LeftArrow)) MoveLeft();
+            if (Pressed(pressRight, KeyCode.RightArrow)) MoveRight();
+            if (Pressed(pressUp, KeyCode.UpArrow)) MoveUp();
+            if (Pressed(pressDown, KeyCode.DownArrow)) MoveDown();
 
-            if (pressX.WasPressedThisFrame())
-            {
-                cancelBuy();
-            }
+            if (pressSqr != null && pressSqr.WasPressedThisFrame())
+                OpenConfirmPanel();
+
+            if (pressX != null && pressX.WasPressedThisFrame())
+                CloseShop();
         }
         else
         {
-            if (pressSqr.WasPressedThisFrame())
-            {
-                OpenConfirmPanel();
-            }
+            if (pressSqr != null && pressSqr.WasPressedThisFrame())
+                ConfirmBuy();
 
-            if (pressX.WasPressedThisFrame())
-            {
-                CloseShop();
-            }
+            if (pressX != null && pressX.WasPressedThisFrame())
+                CancelBuy();
         }
     }
 
-    public void OpenShop()
+    private bool Pressed(InputAction action, KeyCode key)
     {
-        panel.SetActive(true);
-        canvasGroup.DOFade(1, 1);
-        GameManager.Instance.PlayerController.enabled = false;
-        updateMoney();
+        return Input.GetKeyDown(key) || (action != null && action.WasPressedThisFrame());
     }
 
-    private void updateMoney()
+    #region Navigation
+
+    void MoveRight()
     {
-        moneyLabel.text = InventoryManager.Instance.GetMoney.ToString();
+        selectIndex++;
+        if (selectIndex >= items.Count)
+            selectIndex = 0;
+
+        UpdateSelectionVisual();
     }
+
+    void MoveLeft()
+    {
+        selectIndex--;
+        if (selectIndex < 0)
+            selectIndex = items.Count - 1;
+
+        UpdateSelectionVisual();
+    }
+
+    void MoveDown()
+    {
+        selectIndex += columnCount;
+        if (selectIndex >= items.Count)
+            selectIndex %= columnCount;
+
+        UpdateSelectionVisual();
+    }
+
+    void MoveUp()
+    {
+        selectIndex -= columnCount;
+        if (selectIndex < 0)
+            selectIndex = items.Count - columnCount + (selectIndex + columnCount);
+
+        UpdateSelectionVisual();
+    }
+
+    void UpdateSelectionVisual()
+{
+    for (int i = 0; i < items.Count; i++)
+    {
+        bool isSelected = i == selectIndex;
+
+        if (items[i].normalSlotImage != null)
+            items[i].normalSlotImage.gameObject.SetActive(!isSelected);
+
+        if (items[i].hoverSlotImage != null)
+            items[i].hoverSlotImage.gameObject.SetActive(isSelected);
+    }
+}
+
+    #endregion
+
+    #region Shop Logic
+
+    public void OpenShop()
+{
+    panel.SetActive(true);
+    canvasGroup.alpha = 0;
+    canvasGroup.DOFade(1, 0.5f);
+
+    GameManager.Instance.PlayerController.enabled = false;
+
+    UpdateSelectionVisual();
+
+    // 👇 รีเซ็ต input ป้องกันปุ่มค้าง
+    pressSqr?.Reset();
+    pressX?.Reset();
+}
 
     public void CloseShop()
     {
         var sequence = DOTween.Sequence();
-        sequence.Append(canvasGroup.DOFade(0, 1));
-
+        sequence.Append(canvasGroup.DOFade(0, 0.5f));
         sequence.AppendCallback(() =>
         {
             panel.SetActive(false);
@@ -101,76 +182,59 @@ public class ShopPanel : MonoBehaviour
         });
     }
 
-    private void OpenConfirmPanel()
+    void OpenConfirmPanel()
     {
-        if (!panel.activeSelf)
-            return;
-
-            confirmPanel.SetActive(true);
+        confirmPanel.SetActive(true);
     }
 
-    private void confirmBuy()
+    void ConfirmBuy()
     {
-        var sequence = DOTween.Sequence();
-        sequence.Append(confirmButton.transform.DOPunchScale(Vector3.one * -0.5f, 0.3f));
-        sequence.AppendCallback(() =>
+        confirmButton.transform.DOPunchScale(Vector3.one * -0.2f, 0.2f);
+        BuyItem(selectIndex);
+        confirmPanel.SetActive(false);
+    }
+
+   void CancelBuy()
+{
+    if (cancelButton != null)
+        cancelButton.transform.DOPunchScale(Vector3.one * -0.2f, 0.2f);
+
+    if (confirmPanel != null)
+        confirmPanel.SetActive(false);
+}
+
+
+    void UpdatePriceTexts()
+    {
+        for (int i = 0; i < items.Count; i++)
         {
-            buyItem(selectIndex);
-            confirmPanel.SetActive(false);
-        });
-    }
-
-    private void cancelBuy()
-    {
-        var sequence = DOTween.Sequence();
-        sequence.Append(cancelButton.transform.DOPunchScale(Vector3.one * -0.5f, 0.3f));
-        sequence.AppendCallback(() =>
-        {
-            confirmPanel.SetActive(false);
-        });
-    }
-
-    private void nextSelect()
-    {
-        selectIndex++;
-
-        if (selectIndex >= toggles.Count)
-            selectIndex = 0;
-
-        toggles[selectIndex].isOn = true;
-    }
-
-    private void previousSelect()
-    {
-        selectIndex--;
-        if(selectIndex < 0)
-            selectIndex = toggles.Count - 1;
-
-        toggles[selectIndex].isOn = true;
-    }
-
-    private void buyItem(int index)
-    {
-        switch (index)
-        {
-            case 0: {
-                    InventoryManager.Instance.AddPaper(5);
-                    InventoryManager.Instance.RemoveMoney(20);
-                    updateMoney();
-                    Debug.Log("paper");
-            } break;
-            case 1: {
-                    InventoryManager.Instance.AddEgg(5);
-                    InventoryManager.Instance.RemoveMoney(20);
-                    updateMoney();
-                    Debug.Log("egg"); 
-            };break;
-            case 2: {
-                    InventoryManager.Instance.AddTape(5);
-                    InventoryManager.Instance.RemoveMoney(50);
-                    updateMoney();
-                    Debug.Log("tape"); 
-            };break;
+            if (items[i].priceText != null)
+                items[i].priceText.text = items[i].price + " ฿";
         }
     }
+
+    #endregion
+
+    #region Buy
+
+   void BuyItem(int index)
+{
+    if (index < 0 || index >= items.Count) return;
+
+    if (NewInventoryManager.Instance == null)
+    {
+        Debug.LogError("InventoryManager is NULL");
+        return;
+    }
+
+    ShopItem item = items[index];
+    var inv = NewInventoryManager.Instance;
+
+    if (inv.RemoveMoney(item.price))
+    {
+        inv.AddItem(item.itemType, item.amount);
+    }
+}
+
+    #endregion
 }

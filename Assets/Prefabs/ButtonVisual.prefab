@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5512698848850284302}
   - component: {fileID: 2291936253861480517}
-  - component: {fileID: 8599129166183680753}
   m_Layer: 0
   m_Name: ButtonVisual
   m_TagString: Untagged
@@ -26,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4603782860172158627}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.02815706, w: 0.9996035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.26, y: 4.19, z: 0}
-  m_LocalScale: {x: 1.3405757, y: 1.4680649, z: 3.9653924}
+  m_LocalScale: {x: 0.23499897, y: 0.25734746, z: 0.6951216}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 3.227}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2291936253861480517
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
-  m_Sprite: {fileID: -1124242045, guid: 18a3396e0ca260e439a60cf02cbb0e72, type: 3}
+  m_SortingOrder: 19
+  m_Sprite: {fileID: 21300000, guid: a6c866c2164a3c84e8794180e09f080a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,24 +84,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8599129166183680753
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4603782860172158627}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0590170e343e1e041997a4b12ff7f679, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

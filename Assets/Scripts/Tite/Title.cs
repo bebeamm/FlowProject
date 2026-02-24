@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Title : MonoBehaviour
+public class title2 : MonoBehaviour
 {
     [SerializeField] private SceneButtonTrigger sceneButtonTrigger;
     [SerializeField] private Button continueButton;

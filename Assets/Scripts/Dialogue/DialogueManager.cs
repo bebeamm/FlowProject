@@ -95,7 +95,7 @@ public class DialogueManager : MonoBehaviour
         if(isShopDialogue && pressSqr.WasPressedThisFrame())
         {
             EndDialogue();
-            ShopPanel.Instance.OpenShop();
+            Shop.Instance.OpenShop();
         }
     }
 
@@ -126,31 +126,38 @@ public class DialogueManager : MonoBehaviour
         DisplayNextDialogueLine(lines[DialoguePage]);
     }
 
-    public void StartDialogueDay(DialogueDayList dialogueDayList,bool shopDialogue = false)
+    public void StartDialogueDay(DialogueDayList dialogueDayList, bool shopDialogue = false)
+{
+    if (Shop.Instance.isShopActive)
+        return;
+
+    int day = TimeManager.Instance.GetDay;
+
+    isShopDialogue = shopDialogue;
+
+    Dialogue selectedDialogue = null;
+
+    for (int i = 0; i < dialogueDayList.dayLists.Count; i++)
     {
-        if (ShopPanel.Instance.isShopActive)
-            return;
-
-        int day = TimeManager.Instance.GetDay;
-
-        isShopDialogue = shopDialogue;
-
-        for (int i = 0; i < dialogueDayList.dayLists.Count; i++)
+        if (dialogueDayList.dayLists[i].Day == day)
         {
-            if (dialogueDayList.dayLists[i].Day == day)
-            {
-                StartDialogue(dialogueDayList.dayLists[i].Dialogue);
-            }
-            else if(dialogueDayList.dayLists[i].Day > day)
-            {
-                StartDialogue(dialogueDayList.dayLists[i-1].Dialogue);
-            }
-            else
-            {
-                StartDialogue(dialogueDayList.dayLists[dialogueDayList.dayLists.Count-1].Dialogue);
-            }
+            selectedDialogue = dialogueDayList.dayLists[i].Dialogue;
+            break; // เจอแล้วหยุดเลย
         }
     }
+
+    // ถ้าไม่มีวันตรง ใช้ตัวสุดท้ายแทน
+    if (selectedDialogue == null && dialogueDayList.dayLists.Count > 0)
+    {
+        selectedDialogue = dialogueDayList.dayLists[dialogueDayList.dayLists.Count - 1].Dialogue;
+    }
+
+    if (selectedDialogue != null)
+    {
+        StartDialogue(selectedDialogue);
+    }
+}
+
 
     public void StartDialogue(Dialogue dialogue)
     {

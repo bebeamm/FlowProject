@@ -42,5 +42,5 @@ public class TimeCycle2 : MonoBehaviour
         c.a = alphaValue;
         targetSprite.color = c;
     }
- 
+
 }

@@ -15,5 +15,5 @@ MonoBehaviour:
   dialogueLines:
   - character:
       name: "\u0E22\u0E32\u0E22\u0E1A\u0E38\u0E0D"
-      icon: {fileID: 11586557, guid: 3f84fb1af3ab7fe4b8512a7d7b93b511, type: 3}
+      icon: {fileID: 94235871, guid: a42eb390353e9074da81db6722ff33a4, type: 3}
     line: "\u0E21\u0E32\u0E0B\u0E37\u0E49\u0E2D\u0E2D\u0E30\u0E44\u0E23\u0E08\u0E4A\u0E30\u0E27\u0E31\u0E19\u0E19\u0E35\u0E49"

@@ -25,6 +25,7 @@ public class Environment : MonoBehaviour
                     NightLight.SetActive(false);
                     morningLight.SetActive(true);
 
+
                     if(sky != null)
                         sky.color = Color.white;
             }

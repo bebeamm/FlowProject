@@ -16,6 +16,7 @@ public class TimeSwitchObject : MonoBehaviour
             eveningObject.SetActive(false);
             nightObject.SetActive(false);
         }
+        
         else if(TOD == TimeOfDay.evening && eveningObject != null)
         {
             morningObject.SetActive(false);

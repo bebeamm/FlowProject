@@ -25,20 +25,4 @@ public class GameManager : MonoBehaviour
             PlayerController = Player.GetComponent<PlayerController>();
         }
     }
-
-    private void Update()
-    {
-        if (pressR1.WasPressedThisFrame())
-        {
-            ResetGame();
-        }
-    }
-
-    private void ResetGame()
-    {
-        Debug.Log("Reset");
-        SceneButtonTrigger.ChangeScene();
-        Destroy(Player,3f);
-        Destroy(this.gameObject,3f);
-    }
 }

@@ -34,7 +34,7 @@ public class TimeManager : MonoBehaviour
 
         timeCount += Time.deltaTime;
 
-        if(timeCount < 180)
+        if(timeCount < 100)
             timeOfDay = TimeOfDay.morning;
         else if (timeCount < 240)
             timeOfDay = TimeOfDay.evening;
@@ -53,6 +53,7 @@ public class TimeManager : MonoBehaviour
         timeCount = 0;
         day++;
     }
+
 }
 
 public enum TimeOfDay

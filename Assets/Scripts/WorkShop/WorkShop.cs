@@ -1,26 +1,21 @@
-using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class WorkShop : MonoBehaviour
 {
-    [SerializeField] int step;
+    [SerializeField] private List<Recipe> recipes;
+    [SerializeField] private int currentRecipeIndex;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
-    [SerializeField] private TMP_Text paperAmount;
-    [SerializeField] private TMP_Text paperBagAmount;
-    [SerializeField] private TMP_Text tapeAmount;
-
-    [SerializeField] List<SpriteRenderer> paperSpriteList;
-
-    bool isReset;
+    private int step;
 
     private InputAction pressUp;
     private InputAction pressDown;
     private InputAction pressLeft;
     private InputAction pressRight;
+
+    private Recipe CurrentRecipe => recipes[currentRecipeIndex];
 
     private void Awake()
     {
@@ -28,136 +23,109 @@ public class WorkShop : MonoBehaviour
         pressUp = InputSystem.actions.FindAction("Interact/Up");
         pressLeft = InputSystem.actions.FindAction("Interact/Left");
         pressRight = InputSystem.actions.FindAction("Interact/Right");
-
-        SetAmount();
-
-        if (InventoryManager.Instance.GetPaper > 0)
-        {
-            paperSpriteList[0].DOFade(1, 1f);
-        }
-    }
-
-    private void SetAmount()
-    {
-        Debug.Log(InventoryManager.Instance.GetTape.ToString());
-
-        paperAmount.text = InventoryManager.Instance.GetPaper.ToString();
-        paperBagAmount.text = InventoryManager.Instance.GetPaperBag.ToString();
-        tapeAmount.text = InventoryManager.Instance.GetTape.ToString();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            NexStep();
-        }
-
-        InputByStep();
+        HandleInput();
     }
 
-    public void NexStep()
+    private void HandleInput()
     {
-        if (InventoryManager.Instance.GetTape <= 0 || InventoryManager.Instance.GetPaper <= 0|| isReset)
+        if (step >= CurrentRecipe.steps.Count)
             return;
 
-        if (step + 1 >= paperSpriteList.Count)
-        {
-            //step = 0;
-            Debug.Log("Out of Range");
+        StepData currentStep = CurrentRecipe.steps[step];
+        StepKey? pressedKey = GetPressedKey();
+
+        if (pressedKey == null)
             return;
-        }
 
-
-        paperSpriteList[step].DOFade(0,1f);
-        StartCoroutine(DelayActive(paperSpriteList[step].gameObject, false, 1f));
-        StartCoroutine(DelayOpenChild(paperSpriteList[step].gameObject,false,0.1f));
-
-        paperSpriteList[step + 1].gameObject.SetActive(true);
-        StartCoroutine(DelayOpenChild(paperSpriteList[step + 1].gameObject, true, 1f));
-        paperSpriteList[step + 1].DOFade(1, 1f);
-
-        step ++;
-
-        if (step + 1 >= paperSpriteList.Count)
+        if (pressedKey == currentStep.requiredKey)
         {
-            Invoke(nameof(ReSetToFirst), 1f);                     
-            Done();      
-        }
-    }
-
-    public IEnumerator DelayActive(GameObject gameObject,bool state, float delayTime)
-    {
-        yield return new WaitForSeconds(delayTime);
-        gameObject.SetActive(state);
-    }
-
-    
-
-    private IEnumerator DelayOpenChild(GameObject gameObject, bool state, float delayTime)
-    {
-        var child = gameObject.transform.GetChild(0);
-        yield return new WaitForSeconds(delayTime);
-        child.gameObject.SetActive(state);
-        Debug.Log(child.name);
-    }
-
-    public void ReSetToFirst()
-    {
-        if(InventoryManager.Instance.GetPaper > 0)
-        {
-            paperSpriteList[0].gameObject.SetActive(true);
-            paperSpriteList[0].DOFade(1,1f);
-            StartCoroutine(DelayOpenChild(paperSpriteList[0].gameObject, true, 1f));
-
-            paperSpriteList[paperSpriteList.Count - 1].DOFade(0, 1f);
-            StartCoroutine(DelayOpenChild(paperSpriteList[paperSpriteList.Count - 1].gameObject, false, 1f));
+            StepSuccess();
         }
         else
         {
-            paperSpriteList[paperSpriteList.Count - 1].DOFade(0, 1f);
-            //StartCoroutine(DelayOpenChild(paperSpriteList[paperSpriteList.Count - 1].gameObject, false, 1f));
-            paperSpriteList[0].gameObject.SetActive(false);
+            Debug.Log("Wrong Step! Reset!");
+            ResetMiniGame();
         }
-
-        isReset = false;
     }
 
-    private void Done()
+    private StepKey? GetPressedKey()
     {
-        InventoryManager.Instance.RemovePaper(1);
-        InventoryManager.Instance.UseTape();
-        InventoryManager.Instance.AddPaperBag(1);
-        step = 0;
-        SetAmount();
-        isReset = true;
-        Debug.Log("Done");
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || (pressLeft != null && pressLeft.WasPerformedThisFrame()))
+            return StepKey.Left;
+
+        if (Input.GetKeyDown(KeyCode.RightArrow) || (pressRight != null && pressRight.WasPerformedThisFrame()))
+            return StepKey.Right;
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) || (pressUp != null && pressUp.WasPerformedThisFrame()))
+            return StepKey.Up;
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) || (pressDown != null && pressDown.WasPerformedThisFrame()))
+            return StepKey.Down;
+
+        return null;
     }
-    
-    public void InputByStep()
+
+    private void StepSuccess()
     {
-        switch (step)
+        // เปลี่ยน sprite ตาม step
+        if (step < CurrentRecipe.stepSprites.Count)
         {
-            case 0: if(Input.GetKeyDown(KeyCode.LeftArrow) || pressLeft.WasPerformedThisFrame()) NexStep();
-                break;
-            case 1:
-                if (Input.GetKeyDown(KeyCode.RightArrow) || pressRight.WasPerformedThisFrame()) NexStep();
-                break;
-            case 2:
-                if (Input.GetKeyDown(KeyCode.UpArrow) || pressUp.WasPerformedThisFrame()) NexStep();
-                break;
-            case 3:
-                if (Input.GetKeyDown(KeyCode.LeftArrow) || pressLeft.WasPerformedThisFrame()) NexStep();
-                break;
-            case 4:
-                if (Input.GetKeyDown(KeyCode.RightArrow)|| pressRight.WasPerformedThisFrame()) NexStep();
-                break;
-            case 5:
-                if (Input.GetKeyDown(KeyCode.UpArrow) || pressUp.WasPerformedThisFrame()) NexStep();
-                break;
-            case 6:
-                if (Input.GetKeyDown(KeyCode.DownArrow) || pressDown.WasPerformedThisFrame()) NexStep();
-                break;
+            spriteRenderer.sprite = CurrentRecipe.stepSprites[step];
+        }
+
+        step++;
+
+        if (step >= CurrentRecipe.steps.Count)
+        {
+            if (CanCraft())
+            {
+                Craft();
+            }
+
+            ResetMiniGame();
         }
     }
+
+    private bool CanCraft()
+    {
+        var inv = NewInventoryManager.Instance;
+
+        foreach (var ingredient in CurrentRecipe.ingredients)
+        {
+            if (inv.GetItem(ingredient.itemType) < ingredient.amount)
+                return false;
+        }
+
+        return true;
+    }
+
+    private void Craft()
+    {
+        var inv = NewInventoryManager.Instance;
+
+        // หักของก่อน
+        foreach (var ingredient in CurrentRecipe.ingredients)
+        {
+            inv.RemoveItem(ingredient.itemType, ingredient.amount);
+        }
+
+        // ให้ของผลลัพธ์
+        inv.AddItem(CurrentRecipe.resultItem, CurrentRecipe.resultAmount);
+
+        Debug.Log("Craft Success!");
+    }
+
+   private void ResetMiniGame()
+{
+    step = 0;
+
+    if (spriteRenderer != null && CurrentRecipe.baseSprite != null)
+    {
+        spriteRenderer.sprite = CurrentRecipe.baseSprite;
+    }
+}
 }

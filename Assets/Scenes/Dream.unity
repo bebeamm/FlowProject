@@ -434,6 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionKey: 4
   timeOfDay: 0
+  timeOfDay2: 0
   isBypassAction: 1
   targetUI: {fileID: 0}
   DialogueTrigger: {fileID: 0}
